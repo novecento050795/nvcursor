@@ -1,30 +1,32 @@
 # nvcursor
 
-Автоматический обновлятель Cursor IDE для Linux
+_[Русский](README_ru.md) | English_
 
-## Описание
+Automatic Cursor IDE updater for Linux
 
-`nvcursor` — это bash-скрипт для автоматической установки и обновления Cursor IDE на Linux-системах. Скрипт проверяет текущую версию, сравнивает её с последней доступной и обновляет при необходимости.
+## Description
 
-## Возможности
+`nvcursor` is a bash script for automatic installation and updating of Cursor IDE on Linux systems. The script checks the current version, compares it with the latest available version, and updates when necessary.
 
-- ✅ Автоматическая проверка и загрузка последней версии Cursor
-- ✅ Сравнение версий для избежания ненужных обновлений
-- ✅ Принудительное обновление при необходимости
-- ✅ Автоматическое создание desktop-файла и иконки
-- ✅ Следование XDG Base Directory Specification
-- ✅ Цветной вывод для лучшего UX
-- ✅ Безопасная установка без запуска от root
+## Features
 
-## Требования
+- ✅ Automatic checking and downloading of the latest Cursor version
+- ✅ Version comparison to avoid unnecessary updates
+- ✅ Force update when needed
+- ✅ Automatic creation of desktop file and icon
+- ✅ Follows XDG Base Directory Specification
+- ✅ Colored output for better UX
+- ✅ Safe installation without running as root
 
-- Linux-система с поддержкой AppImage
-- `curl` для API-запросов
-- `jq` для парсинга JSON
-- `wget` для загрузки файлов
-- `sudo` права для установки
+## Requirements
 
-### Установка зависимостей
+- Linux system with AppImage support
+- `curl` for API requests
+- `jq` for JSON parsing
+- `wget` for downloading files
+- `sudo` privileges for installation
+
+### Installing dependencies
 
 **Ubuntu/Debian:**
 
@@ -49,18 +51,18 @@ sudo yum install curl jq wget
 sudo pacman -S curl jq wget
 ```
 
-## Установка nvcursor
+## Installing nvcursor
 
-### Способ 1: Быстрая установка
+### Method 1: Quick installation
 
 ```bash
-# Скачать и установить в один шаг
+# Download and install in one step
 curl -fsSL https://raw.githubusercontent.com/novecento/cursor-updater/main/nvcursor.sh -o nvcursor.sh
 chmod +x nvcursor.sh
 sudo mv nvcursor.sh /usr/local/bin/nvcursor
 ```
 
-### Способ 2: Клонирование репозитория
+### Method 2: Clone repository
 
 ```bash
 git clone https://github.com/novecento/cursor-updater.git
@@ -69,44 +71,44 @@ chmod +x nvcursor.sh
 sudo cp nvcursor.sh /usr/local/bin/nvcursor
 ```
 
-### Способ 3: Ручная установка
+### Method 3: Manual installation
 
 ```bash
-# Скачать скрипт
+# Download script
 wget https://raw.githubusercontent.com/novecento/cursor-updater/main/nvcursor.sh
 
-# Сделать исполнимым
+# Make executable
 chmod +x nvcursor.sh
 
-# Переместить в системную директорию (опционально)
+# Move to system directory (optional)
 sudo mv nvcursor.sh /usr/local/bin/nvcursor
 ```
 
-## Использование
+## Usage
 
-### Основные команды
+### Basic commands
 
 ```bash
-# Установить Cursor (если не установлен) или обновить до последней версии
+# Install Cursor (if not installed) or update to latest version
 nvcursor
 
-# Показать текущую версию
+# Show current version
 nvcursor --version
 nvcursor -v
 
-# Принудительное обновление (даже если версия актуальная)
+# Force update (even if version is current)
 nvcursor --force
 nvcursor -f
 
-# Показать справку
+# Show help
 nvcursor --help
 nvcursor -h
 ```
 
-### Примеры использования
+### Usage examples
 
 ```bash
-# Первоначальная установка Cursor
+# Initial Cursor installation
 $ nvcursor
 This script requires sudo privileges to install Cursor.
 [sudo] password for user:
@@ -116,56 +118,56 @@ Downloading Cursor...
 ...
 Cursor installed successfully! Version: 0.42.0
 
-# Проверка обновлений (когда версия актуальная)
+# Check for updates (when version is current)
 $ nvcursor
 Current version: 0.42.0
 Latest version: 0.42.0
 Cursor is already up to date (version 0.42.0)
 
-# Проверка текущей версии
+# Check current version
 $ nvcursor --version
 Cursor version: 0.42.0
 ```
 
-## Принцип работы
+## How it works
 
-1. **Проверка версий**: Скрипт запрашивает последнюю версию через API Cursor
-2. **Сравнение**: Сравнивает с локально сохранённой версией
-3. **Загрузка**: При необходимости загружает новую версию
-4. **Установка**: Устанавливает Cursor в `/opt/cursor/`
-5. **Интеграция**: Создаёт desktop-файл для интеграции с системой
-6. **Сохранение**: Сохраняет информацию о версии для будущих проверок
+1. **Version check**: Script requests the latest version via Cursor API
+2. **Comparison**: Compares with locally saved version
+3. **Download**: Downloads new version if necessary
+4. **Installation**: Installs Cursor to `/opt/cursor/`
+5. **Integration**: Creates desktop file for system integration
+6. **Saving**: Saves version information for future checks
 
-## Расположение файлов
+## File locations
 
-- **Исполнимый файл**: `/opt/cursor/cursor.AppImage`
-- **Иконка**: `/opt/cursor/logo.svg`
-- **Desktop-файл**: `/usr/share/applications/cursor.desktop`
-- **Информация о версии**: `$XDG_CACHE_HOME/cursor-updater/version` (обычно `~/.cache/cursor-updater/version`)
+- **Executable file**: `/opt/cursor/cursor.AppImage`
+- **Icon**: `/opt/cursor/logo.svg`
+- **Desktop file**: `/usr/share/applications/cursor.desktop`
+- **Version information**: `$XDG_CACHE_HOME/cursor-updater/version` (usually `~/.cache/cursor-updater/version`)
 
-## Безопасность
+## Security
 
-- ❌ Скрипт **НЕ** запускается от root
-- ✅ Запрашивает sudo только для операций установки
-- ✅ Автоматически поддерживает sudo-сессию во время работы
-- ✅ Проверяет права доступа перед выполнением
+- ❌ Script does **NOT** run as root
+- ✅ Requests sudo only for installation operations
+- ✅ Automatically maintains sudo session during execution
+- ✅ Checks access permissions before execution
 
-## Автор
+## Author
 
 **Tamirlan Akanov**
 
 - Email: akanovtt@gmail.com
 - GitHub: [@novecento050795](https://github.com/novecento050795)
 
-## Лицензия
+## License
 
-Этот проект распространяется под лицензией MIT. См. файл [LICENSE](LICENSE) для подробностей.
+This project is distributed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## Поддержка
+## Support
 
-Если у вас возникли проблемы или есть предложения:
+If you encounter problems or have suggestions:
 
-1. Создайте issue в [GitHub репозитории](https://github.com/novecento/cursor-updater)
-2. Проверьте, что все зависимости установлены
-3. Убедитесь, что у вас есть права sudo
-4. Запустите скрипт с флагом `--help` для получения подробной информации
+1. Create an issue in the [GitHub repository](https://github.com/novecento/cursor-updater)
+2. Check that all dependencies are installed
+3. Make sure you have sudo privileges
+4. Run the script with the `--help` flag for detailed information
