@@ -57,30 +57,8 @@ sudo pacman -S curl jq wget
 
 ```bash
 # Download and install in one step
-curl -fsSL https://raw.githubusercontent.com/novecento/cursor-updater/main/nvcursor.sh -o nvcursor.sh
+curl -fsSL https://github.com/novecento050795/nvcursor/releases/download/1.0.0/nvcursor.sh -o nvcursor.sh
 chmod +x nvcursor.sh
-sudo mv nvcursor.sh /usr/local/bin/nvcursor
-```
-
-### Method 2: Clone repository
-
-```bash
-git clone https://github.com/novecento/cursor-updater.git
-cd cursor-updater
-chmod +x nvcursor.sh
-sudo cp nvcursor.sh /usr/local/bin/nvcursor
-```
-
-### Method 3: Manual installation
-
-```bash
-# Download script
-wget https://raw.githubusercontent.com/novecento/cursor-updater/main/nvcursor.sh
-
-# Make executable
-chmod +x nvcursor.sh
-
-# Move to system directory (optional)
 sudo mv nvcursor.sh /usr/local/bin/nvcursor
 ```
 
